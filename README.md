@@ -21,7 +21,7 @@ A Binary Trashing android-API for Image-Preprocessing.
 
 > JAVA
 
-    - *constants*
+- *constants*
 
 ```java
        public static final int ITU_R
@@ -34,7 +34,7 @@ A Binary Trashing android-API for Image-Preprocessing.
        public static final int GREYSCALE_1D
 ```
 
-    - *public constructors*
+- *public constructors*
 
 ```java
        public BinTrasher(int colorFormat,Bitmap rawTrash)
@@ -47,7 +47,7 @@ A Binary Trashing android-API for Image-Preprocessing.
        public BinTrasher(String dir, int lumaFormat,String thresholdScaling) throws IOException
 ```
 
- - *public constructors*
+- *public constructors*
 
 ```java
        public Bitmap get888BinaryImage()
