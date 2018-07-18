@@ -52,7 +52,6 @@ A Binary Trashing android-API for Image-Preprocessing.
 ```java
        public Bitmap get888BinaryImage()
        public Bitmap get565BinaryImage()
-       public Bitmap getBinaryImage(boolean _565)
        public double[] getBinaryMatrix()
        public Bitmap getGreyStratifiedImage(int strata)
        public Bitmap getColoredStratifiedImage(int[] strataColors)

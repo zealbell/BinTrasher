@@ -82,7 +82,7 @@ public  class BinTrasher {
             public Bitmap get565BinaryImage(){
                 return getBinaryImage(true);
             }
-            public Bitmap getBinaryImage(boolean _565){
+            private Bitmap getBinaryImage(boolean _565){
                 float lumaThreshold;
                 int pixels[]=new int[width*height];
                 rawTrash.getPixels(pixels,0,width,0,0,width,height);
