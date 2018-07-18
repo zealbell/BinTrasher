@@ -20,11 +20,4 @@ public class Bin extends AppCompatActivity {
     }
 }
 
-class X{
 
-
-
-
-
-
-}
