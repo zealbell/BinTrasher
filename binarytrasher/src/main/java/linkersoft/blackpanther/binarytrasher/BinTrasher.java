@@ -16,22 +16,24 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+
+
 public  class BinTrasher {
 
-            Bitmap rawTrash;
-            static final int ITU_R=0x0;
-            static final int CCIR_601=0x1;
-            static final int SMPTE_240M=0x2;
-            static final int WHITE= Color.WHITE;
-            static final int BLACK=Color.BLACK;
+            private Bitmap rawTrash;
+            public static final int ITU_R=0x0;
+            public static final int CCIR_601=0x1;
+            public static final int SMPTE_240M=0x2;
+            private static final int WHITE= Color.WHITE;
+            private static final int BLACK=Color.BLACK;
             public static final int RGB_3D =0x0;
             public static final int MONOCHROME_3D =0x1;
             public static final int MONOCHROME_1D =0x2;
             public static final int GREYSCALE_3D =0x3;
             public static final int GREYSCALE_1D =0x4;
-            int lumaFormat,width,height,thresholdScaling=-111,colorFormat;
-            float  highestLuma = -1,lowestLuma = -1;
-            float[] LumaRay;
+            private int lumaFormat,width,height,thresholdScaling=-111,colorFormat;
+            private float  highestLuma = -1,lowestLuma = -1;
+            private float[] LumaRay;
 
             public BinTrasher(int colorFormat,Bitmap rawTrash){
                 this.rawTrash =rawTrash;
@@ -69,7 +71,7 @@ public  class BinTrasher {
                 this( BitmapFactory.decodeFile(dir),lumaFormat,thresholdScaling);
             }
 
-            public void resize(int width,int height) throws IOException {
+            private void resize(int width,int height) throws IOException {
                 rawTrash=  Bitmap.createScaledBitmap(rawTrash,width, height,false);
                 this.width=width;
                 this.height=height;
@@ -207,7 +209,8 @@ public  class BinTrasher {
 
                             cellno++;
                          }
-                    }colorspace =  Nd4j.create(new double[][][]{Rchannel, Gchannel, Bchannel});
+                    }
+                    colorspace =  Nd4j.create(new double[][][]{Rchannel, Gchannel, Bchannel});
                      return colorspace;
                     case MONOCHROME_1D:
                      double[] Mchannel1D = new double[height*width];
@@ -314,26 +317,26 @@ public  class BinTrasher {
             public int getHeight(){
                 return height;
             }
-            private float getLuma(int pixel){
+            public float getLuma(int pixel){
                 switch (lumaFormat){
                     case CCIR_601: return  getCCIR_601Luma(pixel);
                     case ITU_R: return getITU_RLuma(pixel);
                     case SMPTE_240M: return getSMPTE_240MLuma(pixel);
                 }return 0;
             }
-            private float getCCIR_601Luma(int pixel){
+            public float getCCIR_601Luma(int pixel){
                 int R = Color.red(pixel),G =  Color.green(pixel),B =Color.blue(pixel);
                 return (R*0.2989F)+(G*0.5870F)+(B*0.1140F);
             }
-            private float getITU_RLuma(int pixel){
+            public float getITU_RLuma(int pixel){
                 int R = Color.red(pixel),G =  Color.green(pixel),B =Color.blue(pixel);
                 return (R*0.2126F)+(G*0.7152F)+(B*0.0722F);
             }
-            private float getSMPTE_240MLuma(int pixel){
+            public float getSMPTE_240MLuma(int pixel){
                 int R = Color.red(pixel),G =  Color.green(pixel),B =Color.blue(pixel);
                 return  (R*0.2120F)+(G*0.7010F)+(B*0.0870F);
             }
-            private float[] getLuma(int pixels[]){
+            public float[] getLuma(int pixels[]){
                 highestLuma = -Float.MAX_VALUE;lowestLuma = Float.MAX_VALUE;
                 LumaRay=new float[pixels.length];
                 float lumlum;
@@ -387,3 +390,5 @@ public  class BinTrasher {
             }
 
         }
+
+
