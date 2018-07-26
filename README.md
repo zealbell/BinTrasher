@@ -59,7 +59,7 @@ A Binary Trashing android-API for fast image pre-processing...
  | getBinaryMatrix() | double[] | *returns* a double array of 1s and 0s(*BLACK n WHITE*) |
  | getGreyStratifiedImage(int strata) | Bitmap | *returns* a Bitmap stratified into the number of _*`strata`*_ specified based on pixel-luma.<br>The image returned would be a Bitmap of _*`strata`*_ colors  |
  | getColoredStratifiedImage(int[] strataColors) | Bitmap | *returns* a Bitmap stratified into the number of _*`strataColors.length`*_ .<br>The image returned would be a Bitmap of _*`strataColors.length`*_  colors from your strataColors |
- | getScaleColorChannels(float start, float end) | INDArray | *returns* a flattened INDArray based on the **constructor** `colorFormat` specified.<br>The INDArray *returned*  would have its element's values range only 4rm `*start*` to `*end*` |
+ | getScaleColorChannels(float start, float end) | INDArray | *returns* a flattened INDArray based on the **constructor** `colorFormat` specified.<br>The INDArray *returned*  would have its element's values range only 4rm `start` to `end` |
  | getColorChannels() | INDArray | *returns* an INDArray based on the **constructor** `colorFormat` specified  |
  | getWidth() | int  | *returns* the width of your `rawTrash`(no Offense) |
  | getHeight() | int  | *returns* the height of your `rawTrash`(no Offense) |
