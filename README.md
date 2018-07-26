@@ -50,6 +50,7 @@ A Binary Trashing android-API for fast image pre-processing.
 | **BinTrasher**(Bitmap rawTrash, int lumaFormat,String thresholdScaling) | `rawTrash` =`*as above*`,`lumaFormat` = `*as above*`,`thresholdScaling` = `*as above*` | `get888BinaryImage()`,`get565BinaryImage()`,`getBinaryMatrix()`<br>`getGreyStratifiedImage(~)`,`getColoredStratifiedImage(~)` |
 
 <center>Centered text</center>
+
 - *public methods*
 
  | **NAME**  | **RETURN**  | **WHAT THEY DO**  |
