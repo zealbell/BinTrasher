@@ -21,7 +21,7 @@ A Binary Trashing android-API for fast image pre-processing...
 
 > JAVA
 
-# __*public static constants*__
+#                                       __public static constants__
 
 | **TYPE**  | **NAME**   | **WHAT IT DOES**  |
 |:---:| :---: | :---: |
@@ -35,7 +35,7 @@ A Binary Trashing android-API for fast image pre-processing...
 | int | GREYSCALE_1D | specifies 1 color-channel(*GREY-INDArray*) for the 2D INDArray to be returned<br> whenever `getColorChannels()` is called |
 
 
-# __*public constructors*__
+#                                              __public constructors__
 
 | **CONSTRUCTOR**  |**HOW THEY CONSTRUCT**  |**SIGNATURE-ASSOCIATED METHODS**  |
 |:---:|-----|:---:|
@@ -50,7 +50,7 @@ A Binary Trashing android-API for fast image pre-processing...
 | **BinTrasher**(Bitmap rawTrash, int lumaFormat,String thresholdScaling) | `rawTrash` =*`as above`*,`lumaFormat` = *`as above`*,`thresholdScaling` = *`as above`* | `get888BinaryImage()`,`get565BinaryImage()`,`getBinaryMatrix()`<br>`getGreyStratifiedImage(~)`,`getColoredStratifiedImage(~)` |
 
 
-# __*public methods*__
+#                                                  __public methods__
 
  | **NAME**  | **RETURN**  | **WHAT THEY DO**  |
  |:---:|:---:|:---:|
