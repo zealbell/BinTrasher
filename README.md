@@ -15,7 +15,7 @@ A Binary Trashing android-API for fast image pre-processing...
         compile 'org.nd4j:nd4j-native:1.0.0-beta'
         compile 'org.nd4j:nd4j-native:1.0.0-beta:android-x86'
         compile 'org.nd4j:nd4j-native:1.0.0-beta:android-arm'
-        compile 'com.github.54LiNKeR:BinTrasher:1.0.0'
+        compile 'com.github.54LiNKeR:BinTrasher:2.0.0'
     }
 ```
 
@@ -23,6 +23,8 @@ A Binary Trashing android-API for fast image pre-processing...
 
 | **PUBLIC STATIC CONSTANTS**  |
 |:---:|
+
+ *********************************
 
 | **TYPE**  | **NAME**   | **WHAT IT DOES**  |
 |:---:| :---: | :---: |
@@ -39,6 +41,8 @@ A Binary Trashing android-API for fast image pre-processing...
 | **PUBLIC CONSTRUCTORS**  |
 |:---:|
 
+ *********************************
+
 | **CONSTRUCTOR**  |**HOW THEY CONSTRUCT**  |**REFLEX METHODS**  |
 |:---:|-----|:---:|
 | **BinTrasher**(Bitmap rawTrash, boolean isBinary) | `rawTrash` = Your Bitmap(no Offense), `isBinary` = tell the truth if rawTrash is made up of only 2-colors(*BLACK n WHITE*) | `getBinaryMatrix()` |
@@ -54,6 +58,8 @@ A Binary Trashing android-API for fast image pre-processing...
 
  | __PUBLIC METHODS__  |
  |:---:|
+ 
+ *********************************
 
  | **NAME**  | **RETURN**  | **WHAT IT DOES**  |
  |:---:|:---:|:---:|
