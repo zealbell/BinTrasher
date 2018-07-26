@@ -39,7 +39,7 @@ A Binary Trashing android-API for fast image pre-processing...
 | **PUBLIC CONSTRUCTORS**  |
 |:---:|
 
-| **CONSTRUCTOR**  |**HOW THEY CONSTRUCT**  |**SIGNATURE-ASSOCIATED METHODS**  |
+| **CONSTRUCTOR**  |**HOW THEY CONSTRUCT**  |**ASSOCIATED METHODS**  |
 |:---:|-----|:---:|
 | **BinTrasher**(Bitmap rawTrash, boolean isBinary) | `rawTrash` = Your Bitmap(no Offense), `isBinary` = tell the truth if rawTrash is made up of only 2-colors(*BLACK n WHITE*) | `getBinaryMatrix()` |
 | **BinTrasher**(int colorFormat,Bitmap rawTrash) | `colorFormat` = RGB_3D / MONOCHROME_3D <br>/ MONOCHROME_1D / GREYSCALE_3D / GREYSCALE_1D<br> `rawTrash` = Your Bitmap(no Offense)  | `getColorChannels()`,`getScaleColorChannels(~)` |
