@@ -34,7 +34,7 @@ public  class BinTrasher {
             private int lumaFormat,width,height,thresholdScaling=-111,colorFormat;
             private float  highestLuma = -1,lowestLuma = -1;
             private float[] LumaRay;
-            private boolean rawTrashIsBinary;
+            private boolean rawTrashIsBinary; 
 
             public BinTrasher(Bitmap rawTrash, boolean isBinary){
         this.rawTrash=rawTrash;
