@@ -34,7 +34,12 @@ public  class BinTrasher {
             private int lumaFormat,width,height,thresholdScaling=-111,colorFormat;
             private float  highestLuma = -1,lowestLuma = -1;
             private float[] LumaRay;
+            private boolean rawTrashIsBinary;
 
+            public BinTrasher(Bitmap rawTrash, boolean isBinary){
+        this.rawTrash=rawTrash;
+        rawTrashIsBinary=isBinary;
+    }
             public BinTrasher(int colorFormat,Bitmap rawTrash){
                 this.rawTrash =rawTrash;
                 width=rawTrash.getWidth();
@@ -71,35 +76,17 @@ public  class BinTrasher {
                 this( BitmapFactory.decodeFile(dir),lumaFormat,thresholdScaling);
             }
 
-            private void resize(int width,int height) throws IOException {
-                rawTrash=  Bitmap.createScaledBitmap(rawTrash,width, height,false);
-                this.width=width;
-                this.height=height;
-            }
+
             public Bitmap get888BinaryImage(){
                 return getBinaryImage(false);
             }
             public Bitmap get565BinaryImage(){
                 return getBinaryImage(true);
             }
-            private Bitmap getBinaryImage(boolean _565){
-                float lumaThreshold;
-                int pixels[]=new int[width*height];
-                rawTrash.getPixels(pixels,0,width,0,0,width,height);
-                LumaRay=getLuma(pixels);
-                lumaThreshold=getLumaThreshold();
-                if(thresholdScaling!=-111)lumaThreshold=lumaThreshold+((lumaThreshold-lowestLuma)*(thresholdScaling/100F));
-                for(int i = 0; i < LumaRay.length; i++){
-                    if(LumaRay[i]>=lumaThreshold)pixels[i]=WHITE;
-                    else pixels[i]=BLACK;
-                }
-                Bitmap bmapImage=Bitmap.createBitmap(width,height,_565? Bitmap.Config.RGB_565: Bitmap.Config.ARGB_8888);
-                bmapImage.setPixels(pixels,0,width,0,0,width,height);
-                return bmapImage;
-            }
+
             public double[] getBinaryMatrix(){
                 double matrix[]=new double[width*height];
-                if(rawTrash==null){
+                if(!rawTrashIsBinary){
                     float lumaThreshold;
                     int pixels[]=new int[width*height];
                     rawTrash.getPixels(pixels,0,width,0,0,width,height);
@@ -174,7 +161,7 @@ public  class BinTrasher {
                 coloredStrat.setPixels(pixels,0,width,0,0,width,height);
                 return coloredStrat;
             }
-            public INDArray scaleColorChannels(float start, float end){
+            public INDArray getScaleColorChannels(float start, float end){
                 int pixels[]=new int[width*height];
                 rawTrash.getPixels(pixels,0,width,0,0,width,height);
                 INDArray colorspace;
@@ -365,6 +352,27 @@ public  class BinTrasher {
                         }break;
                 }return LumaRay;
             }
+            public void setLumaFormat(int lumaFormat) {
+               this.lumaFormat = lumaFormat;
+           }
+            public void setColorFormat(int colorFormat) {
+               this.colorFormat = colorFormat;
+           }
+            public void writeBinaryImage(String savelocation,String name) throws IOException {
+        if(rawTrash==null)throw new IOException("nothing to empty your i.e. rawTrash == null");
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        rawTrash.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] byt = baos.toByteArray();
+        File f = new File(savelocation + "/" +name+".jpeg");
+        try {
+            f.createNewFile();
+            FileOutputStream tasha = new FileOutputStream(f);
+            tasha.write(byt);
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+    }
+
             private float getLumaThreshold(){
                 return lowestLuma+((highestLuma-lowestLuma)/2F);
             }
@@ -375,19 +383,26 @@ public  class BinTrasher {
                     if (LumaRay[k] < lowestLuma)lowestLuma = LumaRay[k];
                 }
             }
-            public static void writeBinaryImage(Bitmap binaryImage,String savelocation,String name) {
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                binaryImage.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                byte[] byt = baos.toByteArray();
-                File f = new File(savelocation + "/" + name);
-                try {
-                    f.createNewFile();
-                    FileOutputStream tasha = new FileOutputStream(f);
-                    tasha.write(byt);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
+            private Bitmap getBinaryImage(boolean _565){
+        float lumaThreshold;
+        int pixels[]=new int[width*height];
+        rawTrash.getPixels(pixels,0,width,0,0,width,height);
+        LumaRay=getLuma(pixels);
+        lumaThreshold=getLumaThreshold();
+        if(thresholdScaling!=-111)lumaThreshold=lumaThreshold+((lumaThreshold-lowestLuma)*(thresholdScaling/100F));
+        for(int i = 0; i < LumaRay.length; i++){
+            if(LumaRay[i]>=lumaThreshold)pixels[i]=WHITE;
+            else pixels[i]=BLACK;
+        }
+        Bitmap bmapImage=Bitmap.createBitmap(width,height,_565? Bitmap.Config.RGB_565: Bitmap.Config.ARGB_8888);
+        bmapImage.setPixels(pixels,0,width,0,0,width,height);
+        return bmapImage;
+    }
+            private void resize(int width,int height) throws IOException {
+        rawTrash=  Bitmap.createScaledBitmap(rawTrash,width, height,false);
+        this.width=width;
+        this.height=height;
+    }
 
         }
 
