@@ -49,7 +49,7 @@ A Binary Trashing android-API for fast image pre-processing.
 | **BinTrasher**(String dir, int lumaFormat,String thresholdScaling) **throws IOException** | `dir` = path to your Bitmap, `lumaFormat` = `*as above*`, `thresholdScaling` = how much above/below the minimum-luma(the initial threshold) to use as the new threshold<br> so if it's 50% then new-threshold= old-threshold +((old-threshold-lowestLuma)\*(50/100F)<br>  or if it's -25% then new-threshold= old-threshold +((old-threshold-lowestLuma)\*(-25/100F) | `get888BinaryImage()`,`get565BinaryImage()`,`getBinaryMatrix()`<br>`getGreyStratifiedImage(~)`,`getColoredStratifiedImage(~)` |
 | **BinTrasher**(Bitmap rawTrash, int lumaFormat,String thresholdScaling) | `rawTrash` =`*as above*`,`lumaFormat` = `*as above*`,`thresholdScaling` = `*as above*` | `get888BinaryImage()`,`get565BinaryImage()`,`getBinaryMatrix()`<br>`getGreyStratifiedImage(~)`,`getColoredStratifiedImage(~)` |
 
-
+<center>Centered text</center>
 - *public methods*
 
  | **NAME**  | **RETURN**  | **WHAT THEY DO**  |
